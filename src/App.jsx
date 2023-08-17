@@ -3,6 +3,7 @@ import Cards from './components/Cards/Cards';
 
 import './global.css';
 import Header from './components/Header/Header';
+import Modal from './components/Modal/Modal';
 
 const API_KEY = 'cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY';
 
@@ -66,7 +67,12 @@ function App() {
           setCurrentScore={setCurrentScore}
         />
       )}
-      {isGameOver && <p>Game over</p>}
+      {isGameOver && (
+        <Modal
+          setIsGameOver={setIsGameOver}
+          setCurrentScore={setCurrentScore}
+        />
+      )}
     </>
   );
 }

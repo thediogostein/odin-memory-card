@@ -1,0 +1,26 @@
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+}
+
+.modal {
+  border-radius: 5px;
+  padding: 1rem;
+  position: fixed;
+  background-color: rgb(41, 41, 231);
+  top: 30vh;
+  width: 80%;
+  z-index: 999;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button {
+  padding: 0.5rem 2rem;
+}
