@@ -1,0 +1,11 @@
+.card {
+  background-color: rgb(4, 31, 54);
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.img {
+  border-radius: 12px;
+}
