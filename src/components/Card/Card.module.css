@@ -1,11 +1,15 @@
 .card {
-  background-color: rgb(4, 31, 54);
+  /* background-color: rgb(4, 31, 54); */
   display: grid;
   place-items: center;
   border-radius: 16px;
-  padding: 1rem;
+  /* padding: 1rem; */
+  border: none;
+  cursor: pointer;
 }
 
 .img {
+  aspect-ratio: 1;
+  object-fit: cover;
   border-radius: 12px;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Cards from './components/Cards/Cards';
 
 import './global.css';
+import Header from './components/Header/Header';
 
 const API_KEY = 'cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY';
 
@@ -11,6 +12,21 @@ function App() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
+  // Fisher-Yates sorting algorithm
+  function shuffle() {
+    console.log('shuffle');
+    let array = [...data];
+    let i = array.length;
+    while (--i > 0) {
+      let temp = Math.floor(Math.random() * (i + 1));
+      [array[temp], array[i]] = [array[i], array[temp]];
+    }
+    setData(array);
+  }
 
   useEffect(() => {
     fetch(API_URL) //
@@ -20,10 +36,11 @@ function App() {
             `This is an HTTP error: The status is ${response.status}`
           );
         }
+        console.log('fetching');
         return response.json();
       })
       .then((actualData) => {
-        setData(actualData);
+        setData(actualData.data);
         setError(null);
       })
       .catch((err) => {
@@ -37,11 +54,19 @@ function App() {
 
   return (
     <>
-      <h1>Giphy Api</h1>
+      <Header currentScore={currentScore} />
       {isLoading && <p>Loading ...</p>}
       {error && <p>{`Error fetching the data - ${error}`}</p>}
 
-      {data && <Cards data={data.data} />}
+      {data && !isGameOver && (
+        <Cards
+          data={data}
+          shuffle={shuffle}
+          setIsGameOver={setIsGameOver}
+          setCurrentScore={setCurrentScore}
+        />
+      )}
+      {isGameOver && <p>Game over</p>}
     </>
   );
 }
