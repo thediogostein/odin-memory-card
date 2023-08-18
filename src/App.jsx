@@ -5,6 +5,7 @@ import Modal from './components/Modal/Modal';
 
 import './global.css';
 import StartScreen from './components/StartScreen/StartScreen';
+
 const API_KEY = 'cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY';
 
 const API_URL =
@@ -18,6 +19,8 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [hasWonTheGame, setHasWonTheGame] = useState(false);
   const [gameDifficulty, setGameDifficulty] = useState(null);
+  const [numberOfWins, setNumberOfWins] = useState(0);
+  const [numberOfLoses, setNumberOfLoses] = useState(0);
 
   // Fisher-Yates sorting algorithm
   function shuffle() {
@@ -29,6 +32,14 @@ function App() {
       [array[temp], array[i]] = [array[i], array[temp]];
     }
     setData(array);
+  }
+
+  function resetGame() {
+    setNumberOfWins(0);
+    setNumberOfLoses(0);
+    setGameDifficulty(null);
+    setHasWonTheGame(false);
+    console.log('reset');
   }
 
   console.log(gameDifficulty);
@@ -62,7 +73,13 @@ function App() {
 
   const gameTemplate = (
     <>
-      <Header currentScore={currentScore} bestScore={bestScore} />
+      <Header
+        currentScore={currentScore}
+        bestScore={bestScore}
+        numberOfWins={numberOfWins}
+        numberOfLoses={numberOfLoses}
+        resetGame={resetGame}
+      />
       {isLoading && <p>Loading ...</p>}
       {error && <p>{`Error fetching the data - ${error}`}</p>}
 
@@ -76,6 +93,8 @@ function App() {
           setBestScore={setBestScore}
           setHasWonTheGame={setHasWonTheGame}
           gameDifficulty={gameDifficulty}
+          setNumberOfWins={setNumberOfWins}
+          setNumberOfLoses={setNumberOfLoses}
         />
       )}
 
@@ -84,6 +103,7 @@ function App() {
           hasWonTheGame={hasWonTheGame}
           setIsGameOver={setIsGameOver}
           setCurrentScore={setCurrentScore}
+          setBestScore={setBestScore}
         />
       )}
     </>

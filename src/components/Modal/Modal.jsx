@@ -2,8 +2,16 @@ import React from 'react';
 
 import styles from './Modal.module.css';
 
-function Modal({ hasWonTheGame, setIsGameOver, setCurrentScore }) {
+function Modal({
+  hasWonTheGame,
+  setIsGameOver,
+  setCurrentScore,
+  setBestScore,
+}) {
   function handleClick() {
+    if (hasWonTheGame) {
+      setBestScore(0);
+    }
     setIsGameOver(false);
     setCurrentScore(0);
   }

@@ -12,13 +12,15 @@ function Card({
   setBestScore,
   setHasWonTheGame,
   gameDifficulty,
+  setNumberOfWins,
+  setNumberOfLoses,
 }) {
   const [hasBeenClicked, setHasBeenClicked] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   function endGame() {
     setBestScore((prev) => {
-      if (currentScore > prev) {
+      if (currentScore >= prev) {
         return currentScore;
       } else {
         return prev;
@@ -29,15 +31,20 @@ function Card({
 
   function handleClick() {
     if (hasBeenClicked) {
+      setNumberOfLoses((prev) => prev + 1);
       endGame();
+      setHasWonTheGame(false);
     } else {
-      if (currentScore === gameDifficulty - 1) {
-        setHasWonTheGame(true);
-        endGame();
-        return;
-      }
-      setCurrentScore((prev) => prev + 1);
       setHasBeenClicked(true);
+      setCurrentScore((prev) => prev + 1);
+
+      if (currentScore === gameDifficulty - 1) {
+        // setBestScore(4);
+        endGame();
+        setHasWonTheGame(true);
+        setNumberOfWins((prev) => prev + 1);
+      }
+
       shuffle();
     }
   }
@@ -50,7 +57,6 @@ function Card({
     <button className={`${styles.card}`} onClick={handleClick}>
       <img onLoad={handleLoad} src={img} alt={title} className={styles.img} />
       {isLoading && <span className={styles.loading}>loading...</span>}
-      <p>{title}</p>
     </button>
   );
 }

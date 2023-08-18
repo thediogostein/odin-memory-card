@@ -4,7 +4,13 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import styles from './Header.module.css';
 
-function Header({ currentScore, bestScore }) {
+function Header({
+  currentScore,
+  bestScore,
+  numberOfWins,
+  numberOfLoses,
+  resetGame,
+}) {
   return (
     <header className={styles.header}>
       <div className={styles.headerDiv}>
@@ -21,6 +27,9 @@ function Header({ currentScore, bestScore }) {
           <p className={styles.currentScore}>Current Score: {currentScore}</p>
           <p className={styles.bestScore}>Best Score: {bestScore}</p>
         </div>
+        <p>Number of wins: {numberOfWins}</p>
+        <p>Number of loses: {numberOfLoses}</p>
+        <button onClick={() => resetGame()}>Restart game</button>
       </div>
     </header>
   );

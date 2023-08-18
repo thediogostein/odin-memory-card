@@ -12,6 +12,8 @@ function Cards({
   setBestScore,
   setHasWonTheGame,
   gameDifficulty,
+  setNumberOfWins,
+  setNumberOfLoses,
 }) {
   return (
     <main className="wrapper">
@@ -33,6 +35,8 @@ function Cards({
             setBestScore={setBestScore}
             setHasWonTheGame={setHasWonTheGame}
             gameDifficulty={gameDifficulty}
+            setNumberOfWins={setNumberOfWins}
+            setNumberOfLoses={setNumberOfLoses}
           />
         ))}
       </div>
