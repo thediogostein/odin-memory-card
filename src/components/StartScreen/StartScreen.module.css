@@ -2,9 +2,63 @@
   display: grid;
   min-height: 100vh;
   place-content: center;
+  background-color: #021938;
+}
+
+.startScreen h1 {
+  line-height: 1.2;
+}
+
+.startScreen p {
+  margin-bottom: 1rem;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #20030f;
+  padding: 1.5rem;
+  border-radius: 5px;
 }
 
 .btns {
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
+}
+
+.btnEasy,
+.btnMedium,
+.btnHard {
+  padding: 0.45rem 1.2rem;
+  border: none;
+  text-transform: uppercase;
+}
+
+.btnEasy {
+  background-color: #ffc75f;
+  color: #04244d;
+}
+
+.btnEasy:hover,
+.btnEasy:focus {
+  background-color: #d4a650;
+}
+
+.btnMedium {
+  background-color: #ff9671;
+}
+
+.btnMedium:hover,
+.btnMedium:focus {
+  background-color: #dd7e5c;
+}
+
+.btnHard {
+  background-color: #9d174d;
+  color: #f1f1f1;
+}
+.btnHard:hover,
+.btnHard:focus {
+  background-color: #770b36;
 }

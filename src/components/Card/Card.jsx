@@ -39,7 +39,6 @@ function Card({
       setCurrentScore((prev) => prev + 1);
 
       if (currentScore === gameDifficulty - 1) {
-        // setBestScore(4);
         endGame();
         setHasWonTheGame(true);
         setNumberOfWins((prev) => prev + 1);

@@ -14,15 +14,12 @@
   position: fixed;
   background-color: rgb(41, 41, 231);
   top: 30vh;
-  width: 80%;
+  width: 300px;
+  max-width: 80%;
   z-index: 999;
   left: 50%;
   right: 50%;
   transform: translate(-50%, -50%);
-}
-
-.button {
-  padding: 0.5rem 2rem;
 }
 
 .win {
@@ -31,4 +28,36 @@
 
 .lose {
   background-color: #7f1d1d;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.button {
+  margin-right: auto;
+  padding: 0.25rem 1rem;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+
+  border-radius: 5px;
+}
+
+.btnWin {
+  background-color: #9d174d;
+}
+
+.btnWin:hover,
+.btnWin:focus {
+  background-color: #7e0f3b;
+}
+
+.btnLose {
+  background-color: #1e3a8a;
+}
+
+.btnLose:hover,
+.btnLose:focus {
+  background-color: #142e74;
 }

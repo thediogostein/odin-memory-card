@@ -14,22 +14,33 @@ function Header({
   return (
     <header className={styles.header}>
       <div className={styles.headerDiv}>
-        <h1 className={styles.title}>Memory Game</h1>
-        <a
-          href="https://github.com/thediogostein/odin-memory-card"
-          target="_blank"
-          rel="noreferrer"
-          className={styles.credits}
-        >
-          Built by Diogo Stein <FontAwesomeIcon icon={faGithub} />
-        </a>
-        <div className={styles.scoreContainer}>
-          <p className={styles.currentScore}>Current Score: {currentScore}</p>
-          <p className={styles.bestScore}>Best Score: {bestScore}</p>
+        <div>
+          <h1 className={styles.title}>Memory Game</h1>
+          <a
+            href="https://github.com/thediogostein/odin-memory-card"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.credits}
+          >
+            Built by Diogo Stein <FontAwesomeIcon icon={faGithub} />
+          </a>
         </div>
-        <p>Number of wins: {numberOfWins}</p>
-        <p>Number of loses: {numberOfLoses}</p>
-        <button onClick={() => resetGame()}>Restart game</button>
+        <div className={styles.scoreContainer}>
+          <div className={styles.scores}>
+            <p className={styles.currentScore}>Current Score: {currentScore}</p>
+            <p className={styles.bestScore}>Best Score: {bestScore}</p>
+          </div>
+          <div className={styles.totalScore}>
+            <p>
+              Wins: {numberOfWins} | Loses: {numberOfLoses}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className={` wrapper`}>
+        <button className={styles.restartBtn} onClick={() => resetGame()}>
+          Restart game
+        </button>
       </div>
     </header>
   );

@@ -28,13 +28,19 @@ function Modal({
           <h2>{hasWonTheGame ? 'Congratulations' : 'Games over'}</h2>
         </header>
         <div>
-          <p>{hasWonTheGame ? 'you win' : 'you lose'}</p>
+          <p className={styles.message}>
+            {hasWonTheGame ? 'You win!' : 'You lose!'}
+          </p>
         </div>
-        <footer>
-          <button className={styles.button} onClick={handleClick}>
-            Play again?
-          </button>
-        </footer>
+
+        <button
+          className={`${styles.button} ${
+            hasWonTheGame ? styles.btnWin : styles.btnLose
+          }`}
+          onClick={handleClick}
+        >
+          Play again?
+        </button>
       </article>
     </>
   );

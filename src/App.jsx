@@ -24,7 +24,6 @@ function App() {
 
   // Fisher-Yates sorting algorithm
   function shuffle() {
-    console.log('shuffle');
     let array = [...data];
     let i = array.length;
     while (--i > 0) {
@@ -39,10 +38,7 @@ function App() {
     setNumberOfLoses(0);
     setGameDifficulty(null);
     setHasWonTheGame(false);
-    console.log('reset');
   }
-
-  console.log(gameDifficulty);
 
   useEffect(() => {
     fetch(`
@@ -54,12 +50,11 @@ function App() {
             `This is an HTTP error: The status is ${response.status}`
           );
         }
-        console.log('fetching');
+
         return response.json();
       })
       .then((actualData) => {
         setData(actualData.data);
-        console.log(actualData);
         setError(null);
       })
       .catch((err) => {
