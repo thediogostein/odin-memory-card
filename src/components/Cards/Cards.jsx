@@ -14,7 +14,7 @@ function Cards({
   gameDifficulty,
 }) {
   return (
-    <div className="wrapper">
+    <main className="wrapper">
       <p className={styles.rules}>
         *Get points by clicking on an image but don't click on any more than
         once!
@@ -36,7 +36,7 @@ function Cards({
           />
         ))}
       </div>
-    </div>
+    </main>
   );
 }
 

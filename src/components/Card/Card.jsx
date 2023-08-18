@@ -31,7 +31,7 @@ function Card({
     if (hasBeenClicked) {
       endGame();
     } else {
-      if (currentScore === gameDifficulty) {
+      if (currentScore === gameDifficulty - 1) {
         setHasWonTheGame(true);
         endGame();
         return;
@@ -50,6 +50,7 @@ function Card({
     <button className={`${styles.card}`} onClick={handleClick}>
       <img onLoad={handleLoad} src={img} alt={title} className={styles.img} />
       {isLoading && <span className={styles.loading}>loading...</span>}
+      <p>{title}</p>
     </button>
   );
 }
