@@ -34,10 +34,13 @@ function App() {
   }
 
   function resetGame() {
+    setCurrentScore(0);
+    setBestScore(0);
     setNumberOfWins(0);
     setNumberOfLoses(0);
     setGameDifficulty(null);
     setHasWonTheGame(false);
+    setNumberOfLoses(0);
   }
 
   useEffect(() => {
