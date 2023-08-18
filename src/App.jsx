@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import Cards from './components/Cards/Cards';
-
-import './global.css';
 import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
 
+import './global.css';
 const API_KEY = 'cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY';
 
 const API_URL =
-  'https://api.giphy.com/v1/gifs/trending?api_key=cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY&limit=8&offset=0&rating=g&bundle=messaging_non_clips';
+  'https://api.giphy.com/v1/gifs/trending?api_key=cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY&limit=3&offset=0&rating=g&bundle=messaging_non_clips';
 function App() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +15,7 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [hasWonTheGame, setHasWonTheGame] = useState(false);
 
   // Fisher-Yates sorting algorithm
   function shuffle() {
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <>
-      <Header currentScore={currentScore} />
+      <Header currentScore={currentScore} bestScore={bestScore} />
       {isLoading && <p>Loading ...</p>}
       {error && <p>{`Error fetching the data - ${error}`}</p>}
 
@@ -64,11 +64,15 @@ function App() {
           data={data}
           shuffle={shuffle}
           setIsGameOver={setIsGameOver}
+          currentScore={currentScore}
           setCurrentScore={setCurrentScore}
+          setBestScore={setBestScore}
+          setHasWonTheGame={setHasWonTheGame}
         />
       )}
       {isGameOver && (
         <Modal
+          hasWonTheGame={hasWonTheGame}
           setIsGameOver={setIsGameOver}
           setCurrentScore={setCurrentScore}
         />

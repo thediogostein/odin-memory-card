@@ -1,13 +1,43 @@
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* Global */
+
+body {
+  color: white;
+  background-color: #10071d;
+  font-family: 'Changa', sans-serif;
+}
+
 button {
   cursor: pointer;
   font-family: inherit;
 }
 
-body {
-  background-color: black;
-  color: white;
-}
-
-img {
-  max-width: 100%;
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }

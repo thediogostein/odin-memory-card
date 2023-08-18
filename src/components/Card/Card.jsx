@@ -2,18 +2,38 @@ import React, { useEffect, useState } from 'react';
 
 import styles from './Card.module.css';
 
-function Card({ img, title, shuffle, setIsGameOver, setCurrentScore }) {
+function Card({
+  img,
+  title,
+  shuffle,
+  setIsGameOver,
+  currentScore,
+  setCurrentScore,
+  setBestScore,
+  setHasWonTheGame,
+}) {
   const [hasBeenClicked, setHasBeenClicked] = useState(false);
 
   function endGame() {
-    console.log('game over');
+    setBestScore((prev) => {
+      if (currentScore > prev) {
+        return currentScore;
+      } else {
+        return prev;
+      }
+    });
+    setIsGameOver(true);
   }
 
   function handleClick() {
     if (hasBeenClicked) {
-      setIsGameOver(true);
       endGame();
     } else {
+      if (currentScore === 2) {
+        setHasWonTheGame(true);
+        endGame();
+        return;
+      }
       setCurrentScore((prev) => prev + 1);
       setHasBeenClicked(true);
       shuffle();

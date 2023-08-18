@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './Modal.module.css';
 
-function Modal({ setIsGameOver, setCurrentScore }) {
+function Modal({ hasWonTheGame, setIsGameOver, setCurrentScore }) {
   function handleClick() {
     setIsGameOver(false);
     setCurrentScore(0);
@@ -11,12 +11,16 @@ function Modal({ setIsGameOver, setCurrentScore }) {
   return (
     <>
       <div className={styles.backdrop}></div>
-      <article className={styles.modal}>
+      <article
+        className={`${styles.modal} ${
+          hasWonTheGame ? styles.win : styles.lose
+        }`}
+      >
         <header>
-          <h2>Game Over</h2>
+          <h2>{hasWonTheGame ? 'Congratulations' : 'Games over'}</h2>
         </header>
         <div>
-          <p>You lost</p>
+          <p>{hasWonTheGame ? 'you win' : 'you lose'}</p>
         </div>
         <footer>
           <button className={styles.button} onClick={handleClick}>

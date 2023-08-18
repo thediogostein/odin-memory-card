@@ -1,11 +1,16 @@
 .card {
-  /* background-color: rgb(4, 31, 54); */
+  background-color: #1e3a8a;
   display: grid;
   place-items: center;
   border-radius: 16px;
-  /* padding: 1rem; */
+  padding: 1rem;
   border: none;
   cursor: pointer;
+}
+
+.card:hover,
+.card:focus {
+  box-shadow: 3px 13px 100px -34px #ff9671;
 }
 
 .img {

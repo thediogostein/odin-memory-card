@@ -24,3 +24,11 @@
 .button {
   padding: 0.5rem 2rem;
 }
+
+.win {
+  background-color: #1e3a8a;
+}
+
+.lose {
+  background-color: #7f1d1d;
+}
