@@ -11,6 +11,7 @@ function Cards({
   setCurrentScore,
   setBestScore,
   setHasWonTheGame,
+  gameDifficulty,
 }) {
   return (
     <div className="wrapper">
@@ -23,7 +24,7 @@ function Cards({
         {data.map((item) => (
           <Card
             key={item.id}
-            img={item.images.fixed_width.url}
+            img={item.images.fixed_height.webp}
             title={item.title}
             shuffle={shuffle}
             setIsGameOver={setIsGameOver}
@@ -31,6 +32,7 @@ function Cards({
             setCurrentScore={setCurrentScore}
             setBestScore={setBestScore}
             setHasWonTheGame={setHasWonTheGame}
+            gameDifficulty={gameDifficulty}
           />
         ))}
       </div>

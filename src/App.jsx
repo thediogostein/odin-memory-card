@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
 
 import './global.css';
+import StartScreen from './components/StartScreen/StartScreen';
 const API_KEY = 'cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY';
 
 const API_URL =
@@ -16,6 +17,7 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [hasWonTheGame, setHasWonTheGame] = useState(false);
+  const [gameDifficulty, setGameDifficulty] = useState(null);
 
   // Fisher-Yates sorting algorithm
   function shuffle() {
@@ -29,8 +31,12 @@ function App() {
     setData(array);
   }
 
+  console.log(gameDifficulty);
+
   useEffect(() => {
-    fetch(API_URL) //
+    fetch(`
+    https://api.giphy.com/v1/gifs/trending?api_key=cB9DSErDGugXmVLTjPcvkrxmaYA5GnDY&limit=${gameDifficulty}&offset=0&rating=g&bundle=messaging_non_clips
+    `) //
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -42,6 +48,7 @@ function App() {
       })
       .then((actualData) => {
         setData(actualData.data);
+        console.log(actualData);
         setError(null);
       })
       .catch((err) => {
@@ -51,9 +58,9 @@ function App() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [gameDifficulty]);
 
-  return (
+  const gameTemplate = (
     <>
       <Header currentScore={currentScore} bestScore={bestScore} />
       {isLoading && <p>Loading ...</p>}
@@ -68,8 +75,10 @@ function App() {
           setCurrentScore={setCurrentScore}
           setBestScore={setBestScore}
           setHasWonTheGame={setHasWonTheGame}
+          gameDifficulty={gameDifficulty}
         />
       )}
+
       {isGameOver && (
         <Modal
           hasWonTheGame={hasWonTheGame}
@@ -79,6 +88,12 @@ function App() {
       )}
     </>
   );
+
+  const startScreenTemplate = (
+    <StartScreen setGameDifficulty={setGameDifficulty} />
+  );
+
+  return <>{gameDifficulty ? gameTemplate : startScreenTemplate}</>;
 }
 
 export default App;

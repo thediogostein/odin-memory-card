@@ -11,8 +11,10 @@ function Card({
   setCurrentScore,
   setBestScore,
   setHasWonTheGame,
+  gameDifficulty,
 }) {
   const [hasBeenClicked, setHasBeenClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   function endGame() {
     setBestScore((prev) => {
@@ -29,7 +31,7 @@ function Card({
     if (hasBeenClicked) {
       endGame();
     } else {
-      if (currentScore === 2) {
+      if (currentScore === gameDifficulty) {
         setHasWonTheGame(true);
         endGame();
         return;
@@ -40,9 +42,14 @@ function Card({
     }
   }
 
+  function handleLoad() {
+    setIsLoading(false);
+  }
+
   return (
     <button className={`${styles.card}`} onClick={handleClick}>
-      <img src={img} alt={title} className={styles.img} />
+      <img onLoad={handleLoad} src={img} alt={title} className={styles.img} />
+      {isLoading && <span className={styles.loading}>loading...</span>}
     </button>
   );
 }

@@ -9,7 +9,12 @@ function Header({ currentScore, bestScore }) {
     <header className={styles.header}>
       <div className={styles.headerDiv}>
         <h1 className={styles.title}>Memory Game</h1>
-        <a className={styles.credits}>
+        <a
+          href="https://github.com/thediogostein/odin-memory-card"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.credits}
+        >
           Built by Diogo Stein <FontAwesomeIcon icon={faGithub} />
         </a>
         <div className={styles.scoreContainer}>
